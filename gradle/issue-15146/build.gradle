@@ -1,0 +1,47 @@
+project(':consumer') {
+    configurations {
+        foo {
+            canBeResolved = true
+            canBeConsumed = false
+
+            attributes {
+                attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage, 'foo'))
+            }
+        }
+    }
+
+    dependencies {
+        foo project(':producer')
+    }
+
+    tasks.register('foo') {
+        inputs.files(configurations.foo)
+    }
+}
+
+project(':producer') {
+    def generateSources = tasks.create('generateSources') {
+        def outputDirectory = layout.buildDirectory.dir('generated-srcs').get().asFile
+       outputs.dir(outputDirectory) 
+       doLast {
+            new File(outputDirectory, 'foo') << 'bar'
+       }
+    }
+
+    def sources = files(generateSources)
+
+    configurations {
+        elements {
+            canBeResolved = false
+            canBeConsumed = true
+
+            attributes {
+                attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage, 'foo'))
+            }
+
+            def directoryProvider = sources.elements.map { it.first().asFile }
+            outgoing.artifact(directoryProvider)
+        }
+    }
+}
+

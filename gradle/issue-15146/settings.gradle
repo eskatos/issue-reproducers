@@ -1,0 +1,3 @@
+rootProject.name = 'issue-15146'
+include(":consumer")
+include(":producer")
