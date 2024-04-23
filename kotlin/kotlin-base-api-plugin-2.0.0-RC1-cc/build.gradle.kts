@@ -7,11 +7,11 @@ plugins {
 
 apply<KotlinBaseApiPlugin>()
 plugins.withType(KotlinBaseApiPlugin::class) {
-    registerKotlinJvmCompileTask("compileGradleApiKotlinExtensions", "gradle-kotlin-dsl-extensions")
+    registerKotlinJvmCompileTask("reproduce", "reproducer")
 }
 
-val compileGradleApiKotlinExtensions = tasks.named("compileGradleApiKotlinExtensions", KotlinCompile::class) {
+val compileGradleApiKotlinExtensions = tasks.named("reproduce", KotlinCompile::class) {
     source(layout.projectDirectory.dir("src"))
-    destinationDirectory = layout.buildDirectory.dir("classes/some")
+    destinationDirectory = layout.buildDirectory.dir("classes/reproducer")
     multiPlatformEnabled = false
 }
