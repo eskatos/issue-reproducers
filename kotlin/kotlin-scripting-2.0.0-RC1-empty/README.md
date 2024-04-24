@@ -1,4 +1,6 @@
-# Kotlin 2.0.0-RC1 K2 Scripting with empty scripts
+# KT-67727 - Kotlin 2.0.0-RC1 K2 Scripting with empty scripts
+
+https://youtrack.jetbrains.com/issue/KT-67727
 
 Run:
 ```shell

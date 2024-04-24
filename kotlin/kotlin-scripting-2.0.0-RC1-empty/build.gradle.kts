@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "2.0.0-RC1"
+    id("org.jetbrains.kotlin.jvm") version "2.0.0-Beta1"
     `kotlin-dsl`
 }
 
